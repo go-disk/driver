@@ -1,0 +1,11 @@
+run:
+  tests: false
+  skip-dirs:
+    - mock
+
+linters:
+  enable-all: true
+  disable:
+    - nolintlint
+    - wsl
+  fast: false

@@ -1,0 +1,52 @@
+syntax = "proto3";
+option go_package = ".;pb";
+
+package grpc;
+
+import "google/protobuf/empty.proto";
+
+// API for working with database.
+service Disk {
+  // MkDir create new dir by path.
+  rpc MkDir (CreateDir) returns (UUID);
+  // RmDir remove dir by path.
+  rpc RmDir (RemoveDir) returns (google.protobuf.Empty);
+
+  // UploadFile upload new file by path.
+  // First message should be FileInfo, all next message contains chunk.
+  rpc UploadFile (stream UploadData) returns (UUID);
+  // RmFile remove file by path.
+  rpc RmFile (RemoveFile) returns (google.protobuf.Empty);
+}
+
+message CreateDir {
+  string path = 1;
+}
+
+message RemoveDir {
+  string path = 1;
+}
+
+message UploadData {
+  oneof data {
+    FileInfo info = 1;
+    Chunk chunk = 2;
+  }
+}
+
+message RemoveFile {
+  string path = 1;
+}
+
+message UUID {
+  string value = 1;
+}
+
+message FileInfo {
+  string path = 1;
+  bytes meta = 2;
+}
+
+message Chunk {
+  bytes data = 1;
+}
