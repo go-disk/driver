@@ -100,7 +100,7 @@ func id() uuid.UUID {
 }
 
 const (
-	testFile = `testdata/video.mov`
+	testFile = `testdata/file.txt`
 )
 
 func readFile() []byte {
