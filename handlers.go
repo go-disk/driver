@@ -10,33 +10,6 @@ import (
 	"github.com/gofrs/uuid"
 )
 
-// MkDir create new dir in database with path.
-func (c *Client) MkDir(ctx context.Context, path string) (uuid.UUID, error) {
-	in := &pb.CreateDir{Path: path}
-	res, err := c.disk.MkDir(ctx, in)
-	if err != nil {
-		return uuid.Nil, fmt.Errorf("disk MkDir by path: %s err: %w", path, err)
-	}
-
-	id, err := uuid.FromString(res.Value)
-	if err != nil {
-		return uuid.Nil, fmt.Errorf("parse id: %w", err)
-	}
-
-	return id, nil
-}
-
-// RmDir remove dir by path.
-func (c *Client) RmDir(ctx context.Context, path string) error {
-	in := &pb.RemoveDir{Path: path}
-	_, err := c.disk.RmDir(ctx, in)
-	if err != nil {
-		return fmt.Errorf("disk RmDir by path: %s, err: %w", path, err)
-	}
-
-	return nil
-}
-
 // UploadFile upload new file with path and meta.
 func (c *Client) UploadFile(ctx context.Context, path string, meta []byte, r io.Reader) (uuid.UUID, error) {
 	fileInfo := &pb.UploadData{
