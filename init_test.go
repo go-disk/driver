@@ -52,23 +52,10 @@ type assertion interface {
 	Nil(obj interface{}, msg ...interface{})
 	NotNil(obj interface{}, msg ...interface{})
 	Equal(expected, actual interface{}, msgAndArgs ...interface{})
-	Empty(object interface{}, msgAndArgs ...interface{})
 }
 
 type serverMock struct {
 	assert assertion
-}
-
-func (t serverMock) MkDir(ctx context.Context, dir *pb.CreateDir) (*pb.UUID, error) {
-	t.assert.Equal(dirPath, dir.Path)
-
-	return &pb.UUID{Value: dirID.String()}, nil
-}
-
-func (t serverMock) RmDir(ctx context.Context, dir *pb.RemoveDir) (*empty.Empty, error) {
-	t.assert.Equal(dirPath, dir.Path)
-
-	return &empty.Empty{}, nil
 }
 
 func (t serverMock) UploadFile(stream pb.Disk_UploadFileServer) error {
