@@ -5,14 +5,14 @@ import (
 	"google.golang.org/grpc"
 )
 
-// Client for communication with the database Disk.
-type Client struct {
+// FileSystemClient for communication with the database Disk.
+type FileSystemClient struct {
 	disk pb.DiskClient
 }
 
-// New create new instance Client.
-func New(c grpc.ClientConnInterface) *Client {
-	return &Client{
+// New create new instance FileSystemClient.
+func New(c grpc.ClientConnInterface) *FileSystemClient {
+	return &FileSystemClient{
 		disk: pb.NewDiskClient(c),
 	}
 }

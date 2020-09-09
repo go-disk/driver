@@ -15,7 +15,7 @@ func TestClient_UploadFile(t *testing.T) {
 		assert.Nil(f.Close())
 	})
 
-	res, err := c.UploadFile(ctx, filePath, fileMeta, f)
+	res, err := c.Upload(ctx, filePath, fileMeta, f)
 	assert.Nil(err)
 
 	assert.Equal(fileID, res)
@@ -26,6 +26,6 @@ func TestClient_RmFile(t *testing.T) {
 
 	c, assert := start(t)
 
-	err := c.RmFile(ctx, filePath)
+	err := c.Delete(ctx, filePath)
 	assert.Nil(err)
 }

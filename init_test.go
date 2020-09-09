@@ -19,15 +19,13 @@ import (
 var (
 	ctx = context.Background()
 
-	dirPath  = `/path`
 	filePath = `/path.path`
 	fileMeta = []byte{1, 1, 1, 1, 1, 1}
 	bufFile  = readFile()
-	dirID    = id()
 	fileID   = id()
 )
 
-func start(t *testing.T) (*driver.Client, assertion) {
+func start(t *testing.T) (*driver.FileSystemClient, assertion) {
 	r := assertion(require.New(t))
 
 	srv := grpc.NewServer()
@@ -58,7 +56,7 @@ type serverMock struct {
 	assert assertion
 }
 
-func (t serverMock) UploadFile(stream pb.Disk_UploadFileServer) error {
+func (t serverMock) Upload(stream pb.Disk_UploadServer) error {
 	msg, err := stream.Recv()
 	t.assert.Nil(err)
 
@@ -76,7 +74,7 @@ func (t serverMock) UploadFile(stream pb.Disk_UploadFileServer) error {
 	return stream.SendAndClose(&pb.UUID{Value: fileID.String()})
 }
 
-func (t serverMock) RmFile(ctx context.Context, file *pb.RemoveFile) (*empty.Empty, error) {
+func (t serverMock) Delete(ctx context.Context, file *pb.DeleteFile) (*empty.Empty, error) {
 	t.assert.Equal(filePath, file.Path)
 
 	return &empty.Empty{}, nil
