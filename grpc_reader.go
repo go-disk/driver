@@ -11,14 +11,14 @@ import (
 var _ io.Reader = &grpcReader{}
 
 type grpcReader struct {
-	stream pb.Disk_UploadServer
+	stream pb.Disk_UploadFileServer
 	cache  []byte
 }
 
 const chunkSize = 64 * 1024
 
 // NewGRPCReader create new grpc reader.
-func NewGRPCReader(stream pb.Disk_UploadServer) io.Reader {
+func NewGRPCReader(stream pb.Disk_UploadFileServer) io.Reader {
 	return &grpcReader{
 		stream: stream,
 		cache:  []byte{},

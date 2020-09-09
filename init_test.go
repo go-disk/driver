@@ -56,7 +56,7 @@ type serverMock struct {
 	assert assertion
 }
 
-func (t serverMock) Upload(stream pb.Disk_UploadServer) error {
+func (t serverMock) UploadFile(stream pb.Disk_UploadFileServer) error {
 	msg, err := stream.Recv()
 	t.assert.Nil(err)
 
@@ -74,7 +74,7 @@ func (t serverMock) Upload(stream pb.Disk_UploadServer) error {
 	return stream.SendAndClose(&pb.UUID{Value: fileID.String()})
 }
 
-func (t serverMock) Delete(ctx context.Context, file *pb.DeleteFile) (*empty.Empty, error) {
+func (t serverMock) DeleteFile(ctx context.Context, file *pb.DeleteFileInfo) (*empty.Empty, error) {
 	t.assert.Equal(filePath, file.Path)
 
 	return &empty.Empty{}, nil
