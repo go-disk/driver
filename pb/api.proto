@@ -7,21 +7,21 @@ import "google/protobuf/empty.proto";
 
 // API for working with database.
 service Disk {
-  // Upload upload new file by path.
+  // UploadFile upload new file by path.
   // First message should be FileInfo, all next message contains chunk.
-  rpc Upload (stream UploadData) returns (UUID);
-  // Delete remove file by path.
-  rpc Delete (DeleteFile) returns (google.protobuf.Empty);
+  rpc UploadFile (stream UploadData) returns (UUID);
+  // DeleteFile remove file by path.
+  rpc DeleteFile (DeleteFileInfo) returns (google.protobuf.Empty);
 }
 
 message UploadData {
   oneof data {
-    Data    info = 1;
+    Data       info  = 1;
     NewChunk   chunk = 2;
   }
 }
 
-message DeleteFile {
+message DeleteFileInfo {
   string path = 1;
 }
 
