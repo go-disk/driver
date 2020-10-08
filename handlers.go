@@ -11,11 +11,10 @@ import (
 )
 
 // UploadFile upload new file with path and meta.
-func (c *FileSystemClient) UploadFile(ctx context.Context, path string, meta []byte, r io.Reader) (uuid.UUID, error) {
+func (c *FileSystemClient) UploadFile(ctx context.Context, meta []byte, r io.Reader) (uuid.UUID, error) {
 	fileInfo := &pb.UploadData{
 		Data: &pb.UploadData_Info{
 			Info: &pb.Data{
-				Path: path,
 				Meta: meta,
 			},
 		},
@@ -23,7 +22,7 @@ func (c *FileSystemClient) UploadFile(ctx context.Context, path string, meta []b
 
 	stream, err := c.disk.UploadFile(ctx)
 	if err != nil {
-		return uuid.Nil, fmt.Errorf("disk UploadFile by path: %s, err: %w", path, err)
+		return uuid.Nil, fmt.Errorf("disk UploadFile: %w", err)
 	}
 
 	err = stream.Send(fileInfo)
@@ -71,11 +70,11 @@ func (c *FileSystemClient) UploadFile(ctx context.Context, path string, meta []b
 }
 
 // DeleteFile remove file by path.
-func (c *FileSystemClient) DeleteFile(ctx context.Context, path string) error {
-	in := &pb.DeleteFileInfo{Path: path}
+func (c *FileSystemClient) DeleteFile(ctx context.Context, fID uuid.UUID) error {
+	in := &pb.UUID{Value: fID.String()}
 	_, err := c.disk.DeleteFile(ctx, in)
 	if err != nil {
-		return fmt.Errorf("disk RmFile by path: %s, err: %w", path, err)
+		return fmt.Errorf("disk RmFile by path: %s, err: %w", fID, err)
 	}
 
 	return nil

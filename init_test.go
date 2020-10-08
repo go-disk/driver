@@ -19,7 +19,6 @@ import (
 var (
 	ctx = context.Background()
 
-	filePath = `/path.path`
 	fileMeta = []byte{1, 1, 1, 1, 1, 1}
 	bufFile  = readFile()
 	fileID   = id()
@@ -64,7 +63,6 @@ func (t serverMock) UploadFile(stream pb.Disk_UploadFileServer) error {
 	t.assert.NotNil(info)
 
 	t.assert.Equal(fileMeta, info.Meta)
-	t.assert.Equal(filePath, info.Path)
 
 	res, err := ioutil.ReadAll(driver.NewGRPCReader(stream))
 	t.assert.Nil(err)
@@ -74,8 +72,8 @@ func (t serverMock) UploadFile(stream pb.Disk_UploadFileServer) error {
 	return stream.SendAndClose(&pb.UUID{Value: fileID.String()})
 }
 
-func (t serverMock) DeleteFile(ctx context.Context, file *pb.DeleteFileInfo) (*empty.Empty, error) {
-	t.assert.Equal(filePath, file.Path)
+func (t serverMock) DeleteFile(ctx context.Context, file *pb.UUID) (*empty.Empty, error) {
+	t.assert.Equal(fileID.String(), file.Value)
 
 	return &empty.Empty{}, nil
 }

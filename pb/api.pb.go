@@ -110,53 +110,6 @@ func (*UploadData_Info) isUploadData_Data() {}
 
 func (*UploadData_Chunk) isUploadData_Data() {}
 
-type DeleteFileInfo struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Path string `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
-}
-
-func (x *DeleteFileInfo) Reset() {
-	*x = DeleteFileInfo{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeleteFileInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteFileInfo) ProtoMessage() {}
-
-func (x *DeleteFileInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteFileInfo.ProtoReflect.Descriptor instead.
-func (*DeleteFileInfo) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DeleteFileInfo) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
 type UUID struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -168,7 +121,7 @@ type UUID struct {
 func (x *UUID) Reset() {
 	*x = UUID{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[2]
+		mi := &file_api_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -181,7 +134,7 @@ func (x *UUID) String() string {
 func (*UUID) ProtoMessage() {}
 
 func (x *UUID) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[2]
+	mi := &file_api_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -194,7 +147,7 @@ func (x *UUID) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UUID.ProtoReflect.Descriptor instead.
 func (*UUID) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{2}
+	return file_api_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UUID) GetValue() string {
@@ -209,14 +162,13 @@ type Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Path string `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
 	Meta []byte `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 }
 
 func (x *Data) Reset() {
 	*x = Data{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[3]
+		mi := &file_api_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -229,7 +181,7 @@ func (x *Data) String() string {
 func (*Data) ProtoMessage() {}
 
 func (x *Data) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[3]
+	mi := &file_api_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -242,14 +194,7 @@ func (x *Data) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Data.ProtoReflect.Descriptor instead.
 func (*Data) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *Data) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
+	return file_api_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Data) GetMeta() []byte {
@@ -270,7 +215,7 @@ type NewChunk struct {
 func (x *NewChunk) Reset() {
 	*x = NewChunk{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[4]
+		mi := &file_api_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -283,7 +228,7 @@ func (x *NewChunk) String() string {
 func (*NewChunk) ProtoMessage() {}
 
 func (x *NewChunk) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[4]
+	mi := &file_api_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -296,7 +241,7 @@ func (x *NewChunk) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewChunk.ProtoReflect.Descriptor instead.
 func (*NewChunk) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{4}
+	return file_api_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *NewChunk) GetData() []byte {
@@ -317,25 +262,20 @@ var file_api_proto_rawDesc = []byte{
 	0x63, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x48, 0x00, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x12, 0x26,
 	0x0a, 0x05, 0x63, 0x68, 0x75, 0x6e, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e,
 	0x67, 0x72, 0x70, 0x63, 0x2e, 0x4e, 0x65, 0x77, 0x43, 0x68, 0x75, 0x6e, 0x6b, 0x48, 0x00, 0x52,
-	0x05, 0x63, 0x68, 0x75, 0x6e, 0x6b, 0x42, 0x06, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x24,
-	0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x69, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f,
-	0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x70, 0x61, 0x74, 0x68, 0x22, 0x1c, 0x0a, 0x04, 0x55, 0x55, 0x49, 0x44, 0x12, 0x14, 0x0a, 0x05,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c,
-	0x75, 0x65, 0x22, 0x2e, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61,
-	0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x12,
-	0x0a, 0x04, 0x6d, 0x65, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x6d, 0x65,
-	0x74, 0x61, 0x22, 0x1e, 0x0a, 0x08, 0x4e, 0x65, 0x77, 0x43, 0x68, 0x75, 0x6e, 0x6b, 0x12, 0x12,
-	0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x64, 0x61,
-	0x74, 0x61, 0x32, 0x70, 0x0a, 0x04, 0x44, 0x69, 0x73, 0x6b, 0x12, 0x2c, 0x0a, 0x0a, 0x55, 0x70,
-	0x6c, 0x6f, 0x61, 0x64, 0x46, 0x69, 0x6c, 0x65, 0x12, 0x10, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e,
-	0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x44, 0x61, 0x74, 0x61, 0x1a, 0x0a, 0x2e, 0x67, 0x72, 0x70,
-	0x63, 0x2e, 0x55, 0x55, 0x49, 0x44, 0x28, 0x01, 0x12, 0x3a, 0x0a, 0x0a, 0x44, 0x65, 0x6c, 0x65,
-	0x74, 0x65, 0x46, 0x69, 0x6c, 0x65, 0x12, 0x14, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x44, 0x65,
-	0x6c, 0x65, 0x74, 0x65, 0x46, 0x69, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0x16, 0x2e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
-	0x6d, 0x70, 0x74, 0x79, 0x42, 0x06, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x05, 0x63, 0x68, 0x75, 0x6e, 0x6b, 0x42, 0x06, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x1c,
+	0x0a, 0x04, 0x55, 0x55, 0x49, 0x44, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x1a, 0x0a, 0x04,
+	0x44, 0x61, 0x74, 0x61, 0x12, 0x12, 0x0a, 0x04, 0x6d, 0x65, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0c, 0x52, 0x04, 0x6d, 0x65, 0x74, 0x61, 0x22, 0x1e, 0x0a, 0x08, 0x4e, 0x65, 0x77, 0x43,
+	0x68, 0x75, 0x6e, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0c, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x32, 0x66, 0x0a, 0x04, 0x44, 0x69, 0x73, 0x6b,
+	0x12, 0x2c, 0x0a, 0x0a, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x46, 0x69, 0x6c, 0x65, 0x12, 0x10,
+	0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x44, 0x61, 0x74, 0x61,
+	0x1a, 0x0a, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x55, 0x55, 0x49, 0x44, 0x28, 0x01, 0x12, 0x30,
+	0x0a, 0x0a, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x69, 0x6c, 0x65, 0x12, 0x0a, 0x2e, 0x67,
+	0x72, 0x70, 0x63, 0x2e, 0x55, 0x55, 0x49, 0x44, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x42, 0x06, 0x5a, 0x04, 0x2e, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -350,22 +290,21 @@ func file_api_proto_rawDescGZIP() []byte {
 	return file_api_proto_rawDescData
 }
 
-var file_api_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_api_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_api_proto_goTypes = []interface{}{
-	(*UploadData)(nil),     // 0: grpc.UploadData
-	(*DeleteFileInfo)(nil), // 1: grpc.DeleteFileInfo
-	(*UUID)(nil),           // 2: grpc.UUID
-	(*Data)(nil),           // 3: grpc.Data
-	(*NewChunk)(nil),       // 4: grpc.NewChunk
-	(*empty.Empty)(nil),    // 5: google.protobuf.Empty
+	(*UploadData)(nil),  // 0: grpc.UploadData
+	(*UUID)(nil),        // 1: grpc.UUID
+	(*Data)(nil),        // 2: grpc.Data
+	(*NewChunk)(nil),    // 3: grpc.NewChunk
+	(*empty.Empty)(nil), // 4: google.protobuf.Empty
 }
 var file_api_proto_depIdxs = []int32{
-	3, // 0: grpc.UploadData.info:type_name -> grpc.Data
-	4, // 1: grpc.UploadData.chunk:type_name -> grpc.NewChunk
+	2, // 0: grpc.UploadData.info:type_name -> grpc.Data
+	3, // 1: grpc.UploadData.chunk:type_name -> grpc.NewChunk
 	0, // 2: grpc.Disk.UploadFile:input_type -> grpc.UploadData
-	1, // 3: grpc.Disk.DeleteFile:input_type -> grpc.DeleteFileInfo
-	2, // 4: grpc.Disk.UploadFile:output_type -> grpc.UUID
-	5, // 5: grpc.Disk.DeleteFile:output_type -> google.protobuf.Empty
+	1, // 3: grpc.Disk.DeleteFile:input_type -> grpc.UUID
+	1, // 4: grpc.Disk.UploadFile:output_type -> grpc.UUID
+	4, // 5: grpc.Disk.DeleteFile:output_type -> google.protobuf.Empty
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -392,18 +331,6 @@ func file_api_proto_init() {
 			}
 		}
 		file_api_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteFileInfo); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UUID); i {
 			case 0:
 				return &v.state
@@ -415,7 +342,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_api_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Data); i {
 			case 0:
 				return &v.state
@@ -427,7 +354,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_api_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*NewChunk); i {
 			case 0:
 				return &v.state
@@ -450,7 +377,7 @@ func file_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -476,11 +403,11 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DiskClient interface {
-	// UploadFile upload new file by path.
+	// UploadFile upload new file.
 	// First message should be FileInfo, all next message contains chunk.
 	UploadFile(ctx context.Context, opts ...grpc.CallOption) (Disk_UploadFileClient, error)
-	// DeleteFile remove file by path.
-	DeleteFile(ctx context.Context, in *DeleteFileInfo, opts ...grpc.CallOption) (*empty.Empty, error)
+	// DeleteFile remove file by id.
+	DeleteFile(ctx context.Context, in *UUID, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type diskClient struct {
@@ -525,7 +452,7 @@ func (x *diskUploadFileClient) CloseAndRecv() (*UUID, error) {
 	return m, nil
 }
 
-func (c *diskClient) DeleteFile(ctx context.Context, in *DeleteFileInfo, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *diskClient) DeleteFile(ctx context.Context, in *UUID, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/grpc.Disk/DeleteFile", in, out, opts...)
 	if err != nil {
@@ -536,11 +463,11 @@ func (c *diskClient) DeleteFile(ctx context.Context, in *DeleteFileInfo, opts ..
 
 // DiskServer is the server API for Disk service.
 type DiskServer interface {
-	// UploadFile upload new file by path.
+	// UploadFile upload new file.
 	// First message should be FileInfo, all next message contains chunk.
 	UploadFile(Disk_UploadFileServer) error
-	// DeleteFile remove file by path.
-	DeleteFile(context.Context, *DeleteFileInfo) (*empty.Empty, error)
+	// DeleteFile remove file by id.
+	DeleteFile(context.Context, *UUID) (*empty.Empty, error)
 }
 
 // UnimplementedDiskServer can be embedded to have forward compatible implementations.
@@ -550,7 +477,7 @@ type UnimplementedDiskServer struct {
 func (*UnimplementedDiskServer) UploadFile(Disk_UploadFileServer) error {
 	return status.Errorf(codes.Unimplemented, "method UploadFile not implemented")
 }
-func (*UnimplementedDiskServer) DeleteFile(context.Context, *DeleteFileInfo) (*empty.Empty, error) {
+func (*UnimplementedDiskServer) DeleteFile(context.Context, *UUID) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteFile not implemented")
 }
 
@@ -585,7 +512,7 @@ func (x *diskUploadFileServer) Recv() (*UploadData, error) {
 }
 
 func _Disk_DeleteFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteFileInfo)
+	in := new(UUID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -597,7 +524,7 @@ func _Disk_DeleteFile_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/grpc.Disk/DeleteFile",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DiskServer).DeleteFile(ctx, req.(*DeleteFileInfo))
+		return srv.(DiskServer).DeleteFile(ctx, req.(*UUID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
